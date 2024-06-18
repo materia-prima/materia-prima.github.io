@@ -1,95 +1,230 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-
+
+scalable=no">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>裁缝店魏晋故事集</title>
-    <style>
-        body {
-            font-family: "微软雅黑", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .welcome {
-            height: 120px;
-            font-size: 33px;
-            color: #c8d0d3;
-            font-weight: bold;
-            background-color: #080f40;
-            text-align: center;
-            line-height: 120px;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-        }
-        .warning, .lofter, .ao3, .tang, .du, .sijulu, .xianpa, .shortfics, .freetalk {
-            height: 65px;
-            font-size: 20px;
-            color: #c8d0d3;
-            font-weight: bold;
-            background-color: #080f40;
-            text-align: center;
-            line-height: 65px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            display: block;
-        }
-        .tang, .xianpa, .shortfics {
-            background-color: #c8d0d3;
-            color: #131423;
-        }
-        .du, .sijulu, .freetalk {
-            background-color: #e6e6dc;
-            color: #131423;
-        }
-        @media (min-width: 600px) {
-            .warning, .lofter, .ao3 {
-                float: left;
-                width: 33.33%;
-            }
-            .tang, .du, .sijulu, .xianpa, .shortfics, .freetalk {
-                float: left;
-                width: 50%;
-            }
-        }
-        .clear {
-            clear: both;
-        }
-    </style>
+<title>裁缝店魏晋故事集</title>
+<style>
+.welcome{
+        height:120px;
+        font-size:33px;
+        font-family:微软雅黑;
+        color:#c8d0d3;
+        font-weight:bold;
+        background-color:#080f40;
+        text-align:center;
+        line-height:125px;
+        letter-spacing:3px;
+}
+
+.warning{ 
+        height:65px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#c8d0d3;
+        font-weight:bold;
+        background-color:#080f40;
+        float:left;
+        width:50%; 
+        text-align:center;
+        line-height:78px;
+}
+
+.lofter{ 
+        height:65px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#c8d0d3;
+        font-weight:bold;
+        background-color:#080f40;
+        float:left;
+        width:25%;  
+        text-align:center;
+        line-height:78px;
+}
+.ao3{ 
+        height:65px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#c8d0d3;
+        font-weight:bold;
+        background-color:#080f40;
+        float:left;
+        width:25%;  
+        text-align:center;
+        line-height:78px;
+}
+        
+.blank1{ 
+        height:5px;
+        font-size:3px;
+        font-family:微软雅黑;
+        color:#ffffff;
+        font-weight:bold;
+        background-color:#ffffff;
+        text-align:center;
+        line-height:6px;
+}
+
+.blank2{ 
+        height:5px;
+        font-size:3px;
+        font-family:微软雅黑;
+        color:#ffffff;
+        font-weight:bold;
+        background-color:#ffffff;
+        text-align:center;
+        line-height:6px;
+}
+
+.tang{ 
+        height:78px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#131423;
+        font-weight:bold;
+        background-color:#c8d0d3;
+        float:left;
+        width:50%;  
+        text-align:center;
+        line-height:78px;
+}
+
+.du{ 
+        height:78px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#131423;
+        font-weight:bold;
+        background-color:#e6e6dc;
+        float:right;
+        width:50%;  
+        text-align:center;
+        line-height:78px;
+}
+
+.sijulu{ 
+        height:78px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#131423;
+        font-weight:bold;
+        background-color:#e6e6dc;
+        float:left;
+        width:50%;  
+        text-align:center;
+        line-height:78px;
+}
+
+.xianpa{ 
+        height:78px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#131423;
+        font-weight:bold;
+        background-color:#c8d0d3;
+        float:left;
+        width:50%;  
+        text-align:center;
+        line-height:78px;
+}
+.shortfics{ 
+        height:78px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#131423;
+        font-weight:bold;
+        background-color:#c8d0d3;
+        float:left;
+        width:50%;  
+        text-align:center;
+        line-height:78px;
+}
+
+.freetalk{ 
+        height:78px;
+        font-size:20px;
+        font-family:微软雅黑;
+        color:#131423;
+        font-weight:bold;
+        background-color:#e6e6dc;
+        float:right;
+        width:50%;  
+        text-align:center;
+        line-height:78px;
+.first{ 
+        height:336px;
+        font-size:18px;
+        float:left;
+        width:49%;  
+} 
+
+.second{
+        height:336px;
+        font-size:18px;
+        float:left;
+        width:49%;
+} 
+li{margin: 8px auto} 
+
+
+</style>
 </head>
+
 <body>
-    <div class="welcome">
-        裁缝店魏晋故事集
-    </div>
-    <div class="warning">
-        请勿二传二改商用
-    </div>
-    <a href="https://caifengdian59807.lofter.com/" class="lofter">
-        @lofter
-    </a>
-    <a href="https://archiveofourown.org/users/sacerdos" class="ao3">
-        @AO3
-    </a>
-    <div class="clear"></div>
-    <a href="https://materia-prima.github.io/tang/" class="tang">
-        珠玉·隐怀·潜流
-    </a>
-    <a href="https://materia-prima.github.io/du/" class="du">
-        三辰·景初·嘉平
-    </a>
-    <a href="https://materia-prima.github.io/sijulu/" class="sijulu">
-        思钜鹿
-    </a>
-    <a href="https://materia-prima.github.io/xianpa/" class="xianpa">
-        都市爱情
-    </a>
-    <a href="https://materia-prima.github.io/shortfics.html" class="shortfics">
-        旧文·短篇
-    </a>
-    <a href="https://materia-prima.github.io/freetalk/" class="freetalk">
-        杂谈
-    </a>
-    <div class="clear"></div>
+<div class="welcome">
+裁缝店魏晋故事集
+</div>
+
+<div class="warning">
+请勿二传二改商用
+</div>
+
+<a href="https://caifengdian59807.lofter.com/">
+<div class="lofter">
+ @lofter
+</div></a>
+
+<a href="https://archiveofourown.org/users/sacerdos">
+<div class="ao3">
+@AO3
+</div></a> 
+
+<a href="https://materia-prima.github.io/tang/">        
+<div class="tang">
+珠玉·隐怀·潜流
+</div></a>
+
+<a href="https://materia-prima.github.io/du/">        
+<div class="du">
+三辰·景初·嘉平
+</div></a>
+
+<div class="blank1">
+</div>
+
+<a href="https://materia-prima.github.io/sijulu/">        
+<div class="sijulu">
+思钜鹿
+</div></a>
+
+<a href="https://materia-prima.github.io/xianpa/">        
+<div class="xianpa">
+都市爱情
+</div></a>
+        
+<a href="https://materia-prima.github.io/shortfics.html">        
+<div class="shortfics">
+旧文·短篇
+</div></a>
+
+<a href="https://materia-prima.github.io/freetalk/">        
+<div class="freetalk">
+杂谈
+</div></a>
+
+
+
 </body>
-</html>
+<br /><br /><br />
