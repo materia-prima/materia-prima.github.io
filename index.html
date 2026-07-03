@@ -20,7 +20,7 @@
             --border-subtle: rgba(201, 169, 110, 0.2);
             --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
             --shadow-hover: 0 8px 36px rgba(0, 0, 0, 0.45);
-            --radius: 12px;
+            --radius: clamp(8px, 1.2vw, 12px);
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -31,17 +31,36 @@
             padding: 0;
         }
 
+        html {
+            height: 100%;
+        }
+
         body {
             font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", "微软雅黑", "Microsoft YaHei", serif;
             background: #1e3b7a;
             background-attachment: fixed;
-            min-height: 100vh;
+            /* 核心：高度撑满视口，内容居中，禁止溢出滚动 */
+            height: 100vh;
+            height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px 60px;
+            justify-content: center;
+            /* 内边距随视口缩放 */
+            padding: clamp(4px, 1.5vh, 24px) clamp(6px, 2vw, 20px);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.5;
+            overflow: hidden;
+        }
+
+        /* 极小屏幕允许滚动作为兜底 */
+        @media (max-height: 500px), (max-width: 280px) {
+            body {
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
         }
 
         /* ===== 装饰背景纹理 ===== */
@@ -62,40 +81,46 @@
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 680px;
+            max-width: clamp(300px, 90vw, 680px);
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            /* 间隙随视口高度缩放 */
+            gap: clamp(3px, 1vh, 18px);
+            flex: 0 1 auto;
+            /* 让内容在可用空间内均匀分布 */
+            justify-content: center;
         }
 
         /* ===== 顶部标题区 ===== */
         .header {
             text-align: center;
-            padding: 48px 24px 36px;
+            /* 内边距随视口缩放 */
+            padding: clamp(10px, 3vh, 48px) clamp(8px, 2vw, 24px) clamp(6px, 1.8vh, 36px);
             position: relative;
         }
 
         .header-icon {
-            font-size: 42px;
-            margin-bottom: 16px;
+            font-size: clamp(24px, 5vw, 42px);
+            margin-bottom: clamp(4px, 1vh, 16px);
             display: block;
             opacity: 0.9;
             filter: drop-shadow(0 2px 8px rgba(201, 169, 110, 0.3));
         }
 
         .header h1 {
-            font-size: clamp(26px, 5vw, 38px);
+            font-size: clamp(18px, 4.5vw, 38px);
             font-weight: 700;
-            letter-spacing: 6px;
+            letter-spacing: clamp(3px, 0.8vw, 6px);
             color: var(--cream);
             text-shadow: 0 2px 12px rgba(200, 180, 150, 0.25);
-            margin-bottom: 8px;
+            margin-bottom: clamp(2px, 0.5vh, 8px);
+            white-space: nowrap;
         }
 
         .header .subtitle {
-            font-size: 18px;
+            font-size: clamp(11px, 2vw, 18px);
             color: var(--accent-gold);
-            letter-spacing: 8px;
+            letter-spacing: clamp(4px, 1vw, 8px);
             text-transform: uppercase;
             opacity: 0.7;
         }
@@ -104,8 +129,8 @@
         .divider {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 0 20px;
+            gap: clamp(8px, 2vw, 16px);
+            padding: 0 clamp(10px, 3vw, 20px);
         }
 
         .divider::before,
@@ -118,8 +143,8 @@
         }
 
         .divider-dot {
-            width: 6px;
-            height: 6px;
+            width: clamp(4px, 0.8vw, 6px);
+            height: clamp(4px, 0.8vw, 6px);
             background: var(--accent-gold);
             border-radius: 50%;
             opacity: 0.5;
@@ -131,45 +156,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px 28px;
+            gap: clamp(6px, 1.5vw, 12px);
+            padding: clamp(8px, 2vh, 18px) clamp(12px, 3vw, 28px);
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: var(--radius);
             text-align: center;
-            font-size: 22px;
+            font-size: clamp(12px, 2.2vw, 22px);
             color: #ffffff;
-            letter-spacing: 3px;
+            letter-spacing: clamp(1px, 0.4vw, 3px);
         }
 
         .notice-bar .icon {
-            font-size: 26px;
+            font-size: clamp(14px, 2.6vw, 26px);
             opacity: 0.9;
+            flex-shrink: 0;
         }
 
         /* ===== 链接行（Lofter / AO3） ===== */
         .link-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: clamp(6px, 1.5vw, 14px);
         }
 
         .link-card {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 16px 20px;
+            gap: clamp(4px, 1vw, 8px);
+            padding: clamp(8px, 2vh, 16px) clamp(8px, 2vw, 20px);
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius);
             text-decoration: none;
             color: var(--text-light);
-            font-size: 18px;
+            font-size: clamp(12px, 2vw, 18px);
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: clamp(1px, 0.3vw, 2px);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -195,24 +221,26 @@
         }
 
         .link-card .platform-icon {
-            font-size: 24px;
+            font-size: clamp(16px, 2.6vw, 24px);
+            flex-shrink: 0;
         }
 
         /* ===== 章节导航标题 ===== */
         .section-label {
             text-align: center;
-            font-size: 16px;
-            letter-spacing: 6px;
+            font-size: clamp(11px, 1.6vw, 16px);
+            letter-spacing: clamp(3px, 0.6vw, 6px);
             color: var(--text-muted);
             text-transform: uppercase;
-            padding: 8px 0 2px;
+            padding: clamp(2px, 0.5vh, 8px) 0;
         }
 
         /* ===== 故事卡片网格 ===== */
         .story-grid {
             display: grid;
+            /* 始终保持两列 */
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: clamp(5px, 1.3vw, 14px);
         }
 
         .story-card {
@@ -220,15 +248,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 28px 16px;
+            gap: clamp(2px, 0.6vh, 6px);
+            /* 内边距随视口缩放 */
+            padding: clamp(10px, 3vh, 28px) clamp(6px, 1.5vw, 16px);
             text-decoration: none;
             border-radius: var(--radius);
             text-align: center;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            min-height: 100px;
+            /* 最小高度也随视口缩放 */
+            min-height: clamp(50px, 10vh, 100px);
         }
 
         .story-card::after {
@@ -264,9 +294,10 @@
         }
 
         .story-card .card-emoji {
-            font-size: 26px;
+            font-size: clamp(16px, 3vw, 26px);
             opacity: 0.7;
             transition: var(--transition);
+            flex-shrink: 0;
         }
 
         .story-card:hover .card-emoji {
@@ -275,63 +306,123 @@
         }
 
         .story-card .card-title {
-            font-size: 19px;
+            font-size: clamp(12px, 2.2vw, 19px);
             font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: clamp(1px, 0.4vw, 3px);
             transition: var(--transition);
         }
 
         .story-card .card-subtitle {
-            font-size: 12px;
-            letter-spacing: 2px;
+            font-size: clamp(9px, 1.3vw, 12px);
+            letter-spacing: clamp(1px, 0.25vw, 2px);
             opacity: 0.55;
         }
 
         /* ===== 页脚 ===== */
         .footer {
             text-align: center;
-            padding: 24px 0 8px;
-            font-size: 12px;
+            padding: clamp(4px, 1.5vh, 24px) 0 clamp(2px, 0.5vh, 8px);
+            font-size: clamp(9px, 1.3vw, 12px);
             color: var(--text-muted);
-            letter-spacing: 3px;
+            letter-spacing: clamp(1px, 0.4vw, 3px);
             opacity: 0.5;
+            flex-shrink: 0;
         }
 
-        /* ===== 响应式 ===== */
-        @media (max-width: 480px) {
-            .container {
-                gap: 12px;
-            }
-
-            .header {
-                padding: 32px 12px 24px;
-            }
-
+        /* ===== 响应式微调：超小屏 ===== */
+        @media (max-width: 360px) {
             .header h1 {
-                letter-spacing: 4px;
-            }
-
-            .story-grid {
-                gap: 10px;
+                white-space: normal;
+                font-size: clamp(16px, 5vw, 20px);
             }
 
             .story-card {
-                padding: 22px 12px;
-                min-height: 80px;
+                padding: 8px 4px;
+                min-height: 44px;
+                gap: 2px;
             }
 
             .story-card .card-title {
-                font-size: 16px;
-                letter-spacing: 2px;
+                font-size: clamp(11px, 3.5vw, 13px);
+                letter-spacing: 1px;
             }
 
-            .link-row {
-                gap: 10px;
+            .story-card .card-emoji {
+                font-size: clamp(14px, 4vw, 18px);
+            }
+
+            .notice-bar {
+                padding: 6px 10px;
+                font-size: clamp(10px, 3vw, 12px);
+                letter-spacing: 1px;
             }
 
             .link-card {
-                padding: 14px 12px;
-                font-size: 14px;
+                padding: 6px 8px;
+                font-size: clamp(10px, 2.8vw, 12px);
+            }
+        }
+
+        /* ===== 响应式微调：平板/中等屏 ===== */
+        @media (min-width: 600px) and (max-width: 900px) {
+            .container {
+                max-width: 85vw;
+            }
+        }
+
+        /* ===== 响应式微调：宽屏 ===== */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 700px;
+            }
+        }
+
+        /* ===== 横屏手机适配 ===== */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                padding: 4px 8px 2px;
+            }
+            .header-icon {
+                font-size: 18px;
+                margin-bottom: 2px;
+            }
+            .header h1 {
+                font-size: 15px;
+                margin-bottom: 0;
+            }
+            .header .subtitle {
+                font-size: 10px;
+            }
+            .story-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 4px;
+            }
+            .story-card {
+                padding: 6px 4px;
+                min-height: auto;
+            }
+            .story-card .card-emoji {
+                font-size: 16px;
+            }
+            .story-card .card-title {
+                font-size: 10px;
+                letter-spacing: 0;
+            }
+            .notice-bar {
+                padding: 4px 8px;
+                font-size: 10px;
+            }
+            .link-card {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            .footer {
+                padding: 2px 0;
+                font-size: 9px;
+            }
+            .section-label {
+                padding: 1px 0;
+                font-size: 10px;
             }
         }
     </style>
