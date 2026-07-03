@@ -1,230 +1,413 @@
-
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-
-
-scalable=no">
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<title>裁缝店魏晋故事集</title>
-<style>
-.welcome{
-        height:120px;
-        font-size:33px;
-        font-family:微软雅黑;
-        color:#c8d0d3;
-        font-weight:bold;
-        background-color:#080f40;
-        text-align:center;
-        line-height:125px;
-        letter-spacing:3px;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>裁缝店魏晋故事集</title>
+    <style>
+        /* ===== CSS 变量 ===== */
+        :root {
+            --bg-deep: #0a0f2c;
+            --bg-card: #111640;
+            --accent-gold: #c9a96e;
+            --accent-warm: #d4b896;
+            --text-light: #e8e0d5;
+            --text-muted: #b0a89a;
+            --cream: #f5efe0;
+            --sage: #d5d9c8;
+            --ink: #1a1a2e;
+            --white: #fafaf8;
+            --border-subtle: rgba(201, 169, 110, 0.2);
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 36px rgba(0, 0, 0, 0.45);
+            --radius: 12px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-.warning{ 
-        height:65px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#c8d0d3;
-        font-weight:bold;
-        background-color:#080f40;
-        float:left;
-        width:50%; 
-        text-align:center;
-        line-height:78px;
-}
+        /* ===== 基础重置 ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-.lofter{ 
-        height:65px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#c8d0d3;
-        font-weight:bold;
-        background-color:#080f40;
-        float:left;
-        width:25%;  
-        text-align:center;
-        line-height:78px;
-}
-.ao3{ 
-        height:65px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#c8d0d3;
-        font-weight:bold;
-        background-color:#080f40;
-        float:left;
-        width:25%;  
-        text-align:center;
-        line-height:78px;
-}
-        
-.blank1{ 
-        height:5px;
-        font-size:3px;
-        font-family:微软雅黑;
-        color:#ffffff;
-        font-weight:bold;
-        background-color:#ffffff;
-        text-align:center;
-        line-height:6px;
-}
+        body {
+            font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", "微软雅黑", "Microsoft YaHei", serif;
+            background: #1e3b7a;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 60px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
 
-.blank2{ 
-        height:5px;
-        font-size:3px;
-        font-family:微软雅黑;
-        color:#ffffff;
-        font-weight:bold;
-        background-color:#ffffff;
-        text-align:center;
-        line-height:6px;
-}
+        /* ===== 装饰背景纹理 ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(201, 169, 110, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(180, 160, 140, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 80%, rgba(140, 120, 90, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-.tang{ 
-        height:78px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#131423;
-        font-weight:bold;
-        background-color:#c8d0d3;
-        float:left;
-        width:50%;  
-        text-align:center;
-        line-height:78px;
-}
+        /* ===== 主容器 ===== */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
 
-.du{ 
-        height:78px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#131423;
-        font-weight:bold;
-        background-color:#e6e6dc;
-        float:right;
-        width:50%;  
-        text-align:center;
-        line-height:78px;
-}
+        /* ===== 顶部标题区 ===== */
+        .header {
+            text-align: center;
+            padding: 48px 24px 36px;
+            position: relative;
+        }
 
-.sijulu{ 
-        height:78px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#131423;
-        font-weight:bold;
-        background-color:#e6e6dc;
-        float:left;
-        width:50%;  
-        text-align:center;
-        line-height:78px;
-}
+        .header-icon {
+            font-size: 42px;
+            margin-bottom: 16px;
+            display: block;
+            opacity: 0.9;
+            filter: drop-shadow(0 2px 8px rgba(201, 169, 110, 0.3));
+        }
 
-.xianpa{ 
-        height:78px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#131423;
-        font-weight:bold;
-        background-color:#c8d0d3;
-        float:left;
-        width:50%;  
-        text-align:center;
-        line-height:78px;
-}
-.shortfics{ 
-        height:78px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#131423;
-        font-weight:bold;
-        background-color:#c8d0d3;
-        float:left;
-        width:50%;  
-        text-align:center;
-        line-height:78px;
-}
+        .header h1 {
+            font-size: clamp(26px, 5vw, 38px);
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: var(--cream);
+            text-shadow: 0 2px 12px rgba(200, 180, 150, 0.25);
+            margin-bottom: 8px;
+        }
 
-.freetalk{ 
-        height:78px;
-        font-size:20px;
-        font-family:微软雅黑;
-        color:#131423;
-        font-weight:bold;
-        background-color:#e6e6dc;
-        float:right;
-        width:50%;  
-        text-align:center;
-        line-height:78px;
-.first{ 
-        height:336px;
-        font-size:18px;
-        float:left;
-        width:49%;  
-} 
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--accent-gold);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
 
-.second{
-        height:336px;
-        font-size:18px;
-        float:left;
-        width:49%;
-} 
-li{margin: 8px auto} 
+        /* ===== 装饰线 ===== */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 20px;
+        }
 
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0.3;
+        }
 
-</style>
+        .divider-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            opacity: 0.5;
+            flex-shrink: 0;
+        }
+
+        /* ===== 警告/提醒条 ===== */
+        .notice-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 28px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: var(--radius);
+            text-align: center;
+            font-size: 22px;
+            color: #ffffff;
+            letter-spacing: 3px;
+        }
+
+        .notice-bar .icon {
+            font-size: 26px;
+            opacity: 0.9;
+        }
+
+        /* ===== 链接行（Lofter / AO3） ===== */
+        .link-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.08), transparent);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .link-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .link-card .platform-icon {
+            font-size: 24px;
+        }
+
+        /* ===== 章节导航标题 ===== */
+        .section-label {
+            text-align: center;
+            font-size: 16px;
+            letter-spacing: 6px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            padding: 8px 0 2px;
+        }
+
+        /* ===== 故事卡片网格 ===== */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .story-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 28px 16px;
+            text-decoration: none;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            min-height: 100px;
+        }
+
+        .story-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* 浅色卡片 */
+        .story-card.light {
+            background: #e8e4d8;
+            color: var(--ink);
+        }
+
+        .story-card.light:hover {
+            background: #f0ece2;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(200, 190, 170, 0.2);
+        }
+
+        /* 深色卡片 */
+        .story-card.dark {
+            background: #c5c8b8;
+            color: var(--ink);
+        }
+
+        .story-card.dark:hover {
+            background: #cfd2c2;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(180, 185, 165, 0.2);
+        }
+
+        .story-card .card-emoji {
+            font-size: 26px;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .story-card:hover .card-emoji {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .story-card .card-title {
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            transition: var(--transition);
+        }
+
+        .story-card .card-subtitle {
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.55;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            text-align: center;
+            padding: 24px 0 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            opacity: 0.5;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 480px) {
+            .container {
+                gap: 12px;
+            }
+
+            .header {
+                padding: 32px 12px 24px;
+            }
+
+            .header h1 {
+                letter-spacing: 4px;
+            }
+
+            .story-grid {
+                gap: 10px;
+            }
+
+            .story-card {
+                padding: 22px 12px;
+                min-height: 80px;
+            }
+
+            .story-card .card-title {
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+
+            .link-row {
+                gap: 10px;
+            }
+
+            .link-card {
+                padding: 14px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<div class="welcome">
-裁缝店魏晋故事集
-</div>
 
-<div class="warning">
-请勿二传二改商用
-</div>
+    <div class="container">
 
-<a href="https://caifengdian59807.lofter.com/">
-<div class="lofter">
- @lofter
-</div></a>
+        <!-- ===== 标题 ===== -->
+        <header class="header">
+            <span class="header-icon">🏮</span>
+            <h1>裁缝店魏晋故事集</h1>
+            <p class="subtitle">WEI · JIN · STORIES</p>
+        </header>
 
-<a href="https://archiveofourown.org/users/sacerdos">
-<div class="ao3">
-@AO3
-</div></a> 
+        <!-- ===== 版权提醒 ===== -->
+        <div class="notice-bar">
+            <span class="icon">⚠️</span>
+            <span>请勿二传 · 二改 · 商用</span>
+        </div>
 
-<a href="https://materia-prima.github.io/tang/">        
-<div class="tang">
-珠玉·隐怀·潜流
-</div></a>
+        <!-- ===== 外部平台链接 ===== -->
+        <div class="link-row">
+            <a href="https://caifengdian59807.lofter.com/" class="link-card" target="_blank" rel="noopener">
+                <span class="platform-icon">📝</span>
+                <span>@Lofter</span>
+            </a>
+            <a href="https://archiveofourown.org/users/sacerdos" class="link-card" target="_blank" rel="noopener">
+                <span class="platform-icon">📚</span>
+                <span>@AO3</span>
+            </a>
+        </div>
 
-<a href="https://materia-prima.github.io/du/">        
-<div class="du">
-三辰·景初·嘉平
-</div></a>
+        <!-- ===== 装饰分隔线 ===== -->
+        <div class="divider">
+            <span class="divider-dot"></span>
+        </div>
 
-<div class="blank1">
-</div>
+        <!-- ===== 章节标签 ===== -->
+        <div class="section-label">✦ 故事目录 ✦</div>
 
-<a href="https://materia-prima.github.io/sijulu/">        
-<div class="sijulu">
-思钜鹿
-</div></a>
+        <!-- ===== 故事导航卡片 ===== -->
+        <div class="story-grid">
+            <a href="https://materia-prima.github.io/tang/" class="story-card light">
+                <span class="card-emoji">💎</span>
+                <span class="card-title">珠玉·隐怀·潜流</span>
+            </a>
+            <a href="https://materia-prima.github.io/du/" class="story-card dark">
+                <span class="card-emoji">✨</span>
+                <span class="card-title">三辰·景初·嘉平</span>
+            </a>
+            <a href="https://materia-prima.github.io/sijulu/" class="story-card dark">
+                <span class="card-emoji">🏛️</span>
+                <span class="card-title">思钜鹿</span>
+            </a>
+            <a href="https://materia-prima.github.io/xianpa/" class="story-card light">
+                <span class="card-emoji">🌆</span>
+                <span class="card-title">都市爱情</span>
+            </a>
+            <a href="https://materia-prima.github.io/shortfics.html" class="story-card light">
+                <span class="card-emoji">📜</span>
+                <span class="card-title">旧文·短篇</span>
+            </a>
+            <a href="https://materia-prima.github.io/freetalk/" class="story-card dark">
+                <span class="card-emoji">💬</span>
+                <span class="card-title">杂谈</span>
+            </a>
+        </div>
 
-<a href="https://materia-prima.github.io/xianpa/">        
-<div class="xianpa">
-都市爱情
-</div></a>
-        
-<a href="https://materia-prima.github.io/shortfics.html">        
-<div class="shortfics">
-旧文·短篇
-</div></a>
+        <!-- ===== 页脚 ===== -->
+        <footer class="footer">
+            sacerdos © 裁缝店
+        </footer>
 
-<a href="https://materia-prima.github.io/freetalk/">        
-<div class="freetalk">
-杂谈
-</div></a>
-
-
+    </div>
 
 </body>
-<br /><br /><br />
+</html>
